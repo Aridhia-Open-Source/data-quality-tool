@@ -68,7 +68,7 @@ The `read_file` function reads a CSV file and performs data quality checks based
 
 * `validate_data_types`
 
-The `validate_data_types` function validates the data types of the columns in the DataFrame based on the expected schema.
+    The `validate_data_types` function validates the data types of the columns in the DataFrame based on the expected schema.
 
 * `check_for_duplicate_keys`
  
