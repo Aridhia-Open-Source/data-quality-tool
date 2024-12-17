@@ -72,16 +72,16 @@ The `validate_data_types` function validates the data types of the columns in th
 
 * `check_for_duplicate_keys`
  
-The `check_for_duplicate_keys` function checks for duplicate primary keys in the DataFrame.
+    The `check_for_duplicate_keys` function checks for duplicate primary keys in the DataFrame.
 
 * `check_special_characters`
 
-The `check_special_characters` function checks for special characters and escape characters in the specified columns of the DataFrame.
+    The `check_special_characters` function checks for special characters and escape characters in the specified columns of the DataFrame.
 
 * `write_error_details_to_csv`
 
-The `write_error_details_to_csv` function writes the error details to CSV files.
+    The `write_error_details_to_csv` function writes the error details to CSV files.
 
 * `write_error_details_to_pdf`
 
-The `write_error_details_to_pdf` function writes the error details to a PDF file.
+    The `write_error_details_to_pdf` function writes the error details to a PDF file.
