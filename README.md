@@ -66,19 +66,22 @@ The `read_file` function reads a CSV file and performs data quality checks based
 
 * A dictionary containing the counts of datatype errors, duplicate key errors, and special character errors, as well as a detailed error summary.
 
-`validate_data_types`
+* `validate_data_types`
 
 The `validate_data_types` function validates the data types of the columns in the DataFrame based on the expected schema.
 
-`check_for_duplicate_keys_polars`
+* `check_for_duplicate_keys`
  
- The `check_for_duplicate_keys_polars` function checks for duplicate primary keys in the DataFrame.
+The `check_for_duplicate_keys_polars` function checks for duplicate primary keys in the DataFrame.
 
-`check_special_characters`
+* `check_special_characters`
+
 The `check_special_characters` function checks for special characters and escape characters in the specified columns of the DataFrame.
 
-`write_error_details_to_csv`
+* `write_error_details_to_csv`
+
 The `write_error_details_to_csv` function writes the error details to CSV files.
 
-`write_error_details_to_pdf`
+* `write_error_details_to_pdf`
+
 The `write_error_details_to_pdf` function writes the error details to a PDF file.

@@ -24,7 +24,7 @@ def check_special_characters(df, expected_schema):
     except Exception as e:
         raise DataQualityCheckError(f"Failed to find duplicate keys: {str(e)}")
 
-def check_for_duplicate_keys_polars(key, df):
+def check_for_duplicate_keys(key, df):
     # Return a polars dataframe of duplicate rows based on 'key' column
     try:
         duplicate_keys = df.filter(pl.col(key).is_duplicated())
@@ -32,7 +32,7 @@ def check_for_duplicate_keys_polars(key, df):
     except Exception as e:
         raise DataQualityCheckError(f"Failed to find duplicate keys: {str(e)}")
 
-def check_for_duplicate_rows_polars(df):
+def check_for_duplicate_rows(df):
     # Return Polars dataframe of duplicate rows based on all columns
 
     duplicates_all = df.filter(df.is_duplicated())
@@ -240,8 +240,8 @@ def read_file(csv_file_path, expected_schema, primary_key, pdf_report=False, csv
 
         for df_batch in df.collect().iter_slices(batch_size):
             error_details.extend(validate_data_types(df_batch, expected_schema))
-            duplicate_keys = duplicate_keys.vstack(check_for_duplicate_keys_polars(primary_key, df_batch))
-            duplicate_rows = duplicate_rows.vstack(check_for_duplicate_rows_polars(df_batch))
+            duplicate_keys = duplicate_keys.vstack(check_for_duplicate_keys(primary_key, df_batch))
+            duplicate_rows = duplicate_rows.vstack(check_for_duplicate_rows(df_batch))
             special_char_rows = special_char_rows.vstack(check_special_characters(df_batch, expected_schema))
         error_counts = defaultdict(lambda: defaultdict(int))
         for error in error_details:
