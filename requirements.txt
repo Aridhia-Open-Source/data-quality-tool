@@ -1,0 +1,4 @@
+polars
+reportlab
+pandas
+openpyxl
