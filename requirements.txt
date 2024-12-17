@@ -1,4 +1,3 @@
 polars
-reportlab
-pandas
-openpyxl
+reportlab==3.6.1
+pandas==1.3.3
