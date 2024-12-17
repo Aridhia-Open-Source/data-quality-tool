@@ -1,0 +1,9 @@
+index,CustomerID,Name,Email,PhoneNumber,BirthDate,Country,PurchaseAmount,LoyaltyPoints,PremiumMember
+179787,179788,Lance Wood,michaellawson@example.com,+44 9304 874705,1924-03-27,Palestinian Territory,924.02,925,
+179815,179788,Dalton Thompson,wilsongeorge@example.net,+44 4376 354267,,Aruba,534.93,283,
+188985,188986,Michael Michael,lisa10@example.net,,,Greece,91.93,622,True
+189007,188986,Michael Michael,lisa10@example.net,,,Greece,91.93,622,True
+333460,333460,Angela Lowery,,+44 9265 766942,1980-11-17,Poland,331.39,,True
+333461,333460,Angela Lowery,,+44 9265 766942,1980-11-17,Poland,331.39,,True
+667367,667366,Heather Watts,amystrong@example.net,+44 5382 192195,2023-06-16,North Macedonia,,68,True
+667368,667366,Brandy Woodward,gwilliams@example.org,+44 9867 622930,2022-06-17,,933.63,,False
