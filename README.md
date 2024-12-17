@@ -72,7 +72,7 @@ The `validate_data_types` function validates the data types of the columns in th
 
 * `check_for_duplicate_keys`
  
-The `check_for_duplicate_keys_polars` function checks for duplicate primary keys in the DataFrame.
+The `check_for_duplicate_keys` function checks for duplicate primary keys in the DataFrame.
 
 * `check_special_characters`
 
