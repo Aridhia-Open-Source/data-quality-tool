@@ -22,7 +22,7 @@ def check_special_characters(df, expected_schema):
                 special_char_rows = df.filter(mask)
                 return special_char_rows
     except Exception as e:
-        raise DataQualityCheckError(f"Failed to find duplicate keys: {str(e)}")
+        raise DataQualityCheckError(f"Failed to find special characters: {str(e)}")
 
 def check_for_duplicate_keys(key, df):
     # Return a polars dataframe of duplicate rows based on 'key' column
@@ -31,12 +31,6 @@ def check_for_duplicate_keys(key, df):
         return duplicate_keys
     except Exception as e:
         raise DataQualityCheckError(f"Failed to find duplicate keys: {str(e)}")
-
-def check_for_duplicate_rows(df):
-    # Return Polars dataframe of duplicate rows based on all columns
-
-    duplicates_all = df.filter(df.is_duplicated())
-    return duplicates_all
 
 def validate_data_types(df, expected_schema):
     try:
@@ -176,6 +170,8 @@ def write_error_details_to_pdf(error_details,duplicate_keys,special_char_rows):
         if y < 50:
             c.showPage()
             y = height - 30
+    c.line(30, y, width - 30, y)
+    y -= 20
     c.drawString(30, y, "Duplicate Keys")
     c.drawString(30, y - 20, "----------------------------------------")
     y -= 40
@@ -188,6 +184,9 @@ def write_error_details_to_pdf(error_details,duplicate_keys,special_char_rows):
             if y < 50:
                 c.showPage()
                 y = height - 30
+    # Draw a line before the "Rows with Special Characters" heading
+    c.line(30, y, width - 30, y)
+    y -= 20
     # Add Special Characters section
     c.drawString(30, y, "Rows with Special Characters")
     c.drawString(30, y - 20, "----------------------------------------")
@@ -235,13 +234,11 @@ def read_file(csv_file_path, expected_schema, primary_key, pdf_report=False, csv
         batch_size = 10000
         error_details = []
         duplicate_keys = pl.DataFrame()
-        duplicate_rows = pl.DataFrame()
         special_char_rows = pl.DataFrame()
 
         for df_batch in df.collect().iter_slices(batch_size):
             error_details.extend(validate_data_types(df_batch, expected_schema))
             duplicate_keys = duplicate_keys.vstack(check_for_duplicate_keys(primary_key, df_batch))
-            duplicate_rows = duplicate_rows.vstack(check_for_duplicate_rows(df_batch))
             special_char_rows = special_char_rows.vstack(check_special_characters(df_batch, expected_schema))
         error_counts = defaultdict(lambda: defaultdict(int))
         for error in error_details:
@@ -251,6 +248,7 @@ def read_file(csv_file_path, expected_schema, primary_key, pdf_report=False, csv
             #print(
             #f"Column: {error['Column']}, Error Type: {error['Error Type']}, Expected: {error['Expected']}, Actual: {error['Actual']}, Error Value: {error['Error Value']}, Index: {error['Index']}"
          #)
+        print("----------------------------------------")
         print("Datatype Error Summary:")
         print("----------------------------------------")
         for column, error_types in error_counts.items():
@@ -266,6 +264,7 @@ def read_file(csv_file_path, expected_schema, primary_key, pdf_report=False, csv
         # Write the error details to a CSV file
         if csv_report==True:
             write_error_details_to_csv(error_details,duplicate_keys,special_char_rows)
+        print("----------------------------------------")
         print("Error Summary:")
         print("----------------------------------------")
         print(f"Total datatype_errors: {datatype_error_count}")
