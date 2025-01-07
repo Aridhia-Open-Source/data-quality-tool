@@ -49,7 +49,7 @@ Use the `read_file` function to perform data quality checks on your CSV file. Th
 csv_file_path = "./files/testfile_with_errors.csv"
 error_summary = dq.read_file(csv_file_path, expected_schema, 'CustomerID', pdf_report=True, csv_report=True)
 ```
-## Function
+## Main Function
 `read_file`
 
 The `read_file` function reads a CSV file and performs data quality checks based on the provided schema.
@@ -65,6 +65,10 @@ The `read_file` function reads a CSV file and performs data quality checks based
 ### Returns:
 
 * A dictionary containing the counts of datatype errors, duplicate key errors, and special character errors, as well as a detailed error summary.
+
+## Other functions
+
+The following functions are called by the read_file function
 
 * `validate_data_types`
 
@@ -85,3 +89,4 @@ The `read_file` function reads a CSV file and performs data quality checks based
 * `write_error_details_to_pdf`
 
     The `write_error_details_to_pdf` function writes the error details to a PDF file.
+* `print_error_summary` function writes a summary of errors to the console

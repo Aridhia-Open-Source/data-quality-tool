@@ -1,4 +1,3 @@
 polars
 reportlab
 pandas
-pyarrow

@@ -1,0 +1,3 @@
+index,CustomerID,Name,Email,PhoneNumber,BirthDate,Country,PurchaseAmount,LoyaltyPoints,PremiumMember
+11,12,Dana\t Jones,fdaniels@example.net,,1953-12-14,Morocco,253.88,860,False
+35,36,Laura\r Hoffman,jlee@example.org,+44 2357 818701,1943-12-05,Botswana,580.49,400,False

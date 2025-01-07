@@ -1,0 +1,9 @@
+README.md
+setup.py
+dataqualitycheck/__init__.py
+dataqualitycheck/dataqualitycheck.py
+dataqualitycheck.egg-info/PKG-INFO
+dataqualitycheck.egg-info/SOURCES.txt
+dataqualitycheck.egg-info/dependency_links.txt
+dataqualitycheck.egg-info/requires.txt
+dataqualitycheck.egg-info/top_level.txt
