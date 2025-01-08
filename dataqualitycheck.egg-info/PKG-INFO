@@ -1,6 +1,0 @@
-Metadata-Version: 2.1
-Name: dataqualitycheck
-Version: 0.1
-Requires-Dist: polars
-Requires-Dist: reportlab
-Requires-Dist: pandas
